@@ -3,60 +3,58 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Arbani &amp; Raissa – Wedding Invitation</title>
+<title>Gerry &amp; Bella – Wedding Invitation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Italiana&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --brown-900:#31221a;      /* main dark background */
-  --brown-600:#6b5646;      /* buttons, panels */
-  --tan:#beaf9e;            /* venue card */
-  --cream:#f3ebe3;
-  --pink:#e11d74;           /* music button */
+  --navy:#151946;                 /* main background */
+  --cream:#fff8ee;                /* text, buttons, music button */
+  --yellow:#ffcf7b;               /* venue cards + accents */
+  --panel:rgba(21,25,70,.62);     /* translucent panels over photos */
   --serif:'Italiana','Cormorant Garamond',Georgia,serif;
   --sans:'Nunito','Segoe UI',Arial,sans-serif;
   --col:480px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{background:var(--brown-900);color:var(--cream);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body{background:var(--navy);color:var(--cream);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
 body.locked{overflow:hidden;height:100vh}
-.wrap{max-width:var(--col);margin:0 auto;position:relative;overflow:hidden;background:var(--brown-900)}
+.wrap{max-width:var(--col);margin:0 auto;position:relative;overflow:hidden;background:var(--navy)}
 h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:.01em}
-.title{font-size:44px;line-height:1.1;text-align:center;color:#fff}
 
 /* photo placeholders: replaced by CONFIG.photos */
-.ph{background:linear-gradient(160deg,#8a735f 0%,#4a362b 60%,#31221a 100%);background-size:cover;background-position:center}
+.ph{background:linear-gradient(160deg,#3a3f8a 0%,#252b6b 60%,#151946 100%);background-size:cover;background-position:center}
 
 /* buttons */
-.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font:600 15px var(--sans);color:var(--cream);background:var(--brown-600);padding:12px 24px;border-radius:999px;text-decoration:none;transition:filter .2s,transform .2s}
-.btn:hover{filter:brightness(1.12)}
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font:700 15px var(--sans);color:var(--navy);background:var(--cream);padding:12px 24px;border-radius:999px;text-decoration:none;transition:filter .2s,transform .2s}
+.btn:hover{filter:brightness(.94)}
 .btn:active{transform:scale(.97)}
 .btn svg{width:18px;height:18px}
-:focus-visible{outline:2px solid #fff;outline-offset:3px}
+:focus-visible{outline:2px solid var(--yellow);outline-offset:3px}
 
 /* ---------- cover ---------- */
-#cover{position:fixed;inset:0;z-index:50;display:flex;justify-content:center;background:#111;transition:transform 1.1s cubic-bezier(.77,0,.18,1)}
+#cover{position:fixed;inset:0;z-index:50;display:flex;justify-content:center;background:#0b0d25;transition:transform 1.1s cubic-bezier(.77,0,.18,1)}
 #cover.open{transform:translateY(-100%)}
 #cover .inner{position:relative;width:100%;max-width:var(--col);height:100%;overflow:hidden}
 #cover .bg{position:absolute;inset:0;filter:grayscale(1);transform:scale(1.06);animation:slowzoom 14s ease-out forwards}
-#cover .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.1) 55%,rgba(0,0,0,.3) 100%)}
+#cover .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(10,12,35,.6) 0%,rgba(10,12,35,.1) 55%,rgba(10,12,35,.35) 100%)}
 #cover .txt{position:absolute;left:24px;right:24px;top:15%}
 #cover p{font-size:15px;max-width:300px;opacity:0;animation:fadeIn 1.2s .4s forwards}
-#cover h1{font-size:50px;line-height:1.05;margin:26px 0 24px;opacity:0;animation:fadeIn 1.4s 1s forwards}
-#cover h1 span{display:block;font-size:22px;margin:4px 0 4px 2px}
-#cover .btn{opacity:0;animation:fadeIn 1.2s 1.8s forwards,pulse 2.4s 3s infinite;background:rgba(107,86,70,.85);backdrop-filter:blur(4px)}
+#cover h1{font-size:54px;line-height:1.05;margin:26px 0 24px;opacity:0;animation:fadeIn 1.4s 1s forwards}
+#cover h1 span{display:block;font-size:24px;margin:4px 0 4px 2px}
+#cover .btn{opacity:0;animation:fadeIn 1.2s 1.8s forwards,pulse 2.4s 3s infinite}
 @keyframes slowzoom{to{transform:scale(1)}}
 @keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
-@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(243,235,227,.35)}50%{box-shadow:0 0 0 10px rgba(243,235,227,0)}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(255,248,238,.4)}50%{box-shadow:0 0 0 10px rgba(255,248,238,0)}}
 
 /* ---------- hero ---------- */
 #hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:12% 24px 8%}
-#hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,35,35,.55),rgba(40,35,35,.05) 45%,rgba(49,34,26,.5))}
+#hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,25,70,.55),rgba(21,25,70,.05) 45%,rgba(21,25,70,.55))}
 #hero>*{position:relative}
-#hero h1{font-size:50px;line-height:1.05;color:#fff}
-#hero h1 span{display:block;font-size:22px;margin:4px 0 4px 2px}
+#hero h1{font-size:54px;line-height:1.05;color:#fff}
+#hero h1 span{display:block;font-size:24px;margin:4px 0 4px 2px}
 #hero .bottom{display:flex;flex-direction:column;align-items:flex-start;gap:26px}
 .chev{align-self:center;display:flex;flex-direction:column;margin-bottom:-6px}
 .chev svg{width:26px;height:14px;margin-top:-4px;stroke:#fff;fill:none;stroke-width:1.6;opacity:.25;animation:chev 1.6s infinite}
@@ -65,43 +63,44 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:.01em}
 .count{display:flex;gap:22px;align-self:center;text-align:center}
 .count b{display:block;font:400 34px/1 var(--serif);color:#fff}
 .count small{font-size:13px;font-weight:600;color:#fff}
+.savewrap{position:relative}
+.savemenu{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.savemenu[hidden]{display:none}
+.savenote{font-size:13px;color:#fff;max-width:300px}
+.savemenu a{display:block;text-align:center;text-decoration:none;color:var(--cream);font-weight:700;font-size:14px;padding:10px 20px;border:1px solid var(--cream);border-radius:999px;background:rgba(21,25,70,.55);backdrop-filter:blur(4px);animation:fadeIn .4s both}
+.savemenu a:hover{background:rgba(21,25,70,.8)}
 
 /* ---------- reveal on scroll ---------- */
 .rv{opacity:0;transform:translateY(22px);transition:opacity 1s ease,transform 1s ease}
 .rv.in{opacity:1;transform:none}
 
 /* ---------- bride & groom ---------- */
-#intro{padding:60px 24px 28px;background:var(--brown-900)}
+#intro{padding:60px 24px 28px;background:var(--navy)}
 #intro h2{font-size:34px;color:#fff;margin-bottom:16px}
 .person{position:relative;min-height:88vh;display:flex;flex-direction:column}
 .person h2{position:relative;z-index:2;font-size:46px;text-align:center;color:#fff;padding-top:26px}
-.person .card{position:absolute;left:0;bottom:0;width:86%;background:rgba(49,34,26,.62);backdrop-filter:blur(2px);padding:26px 24px 30px;z-index:2}
+.person .card{position:absolute;left:0;bottom:0;width:86%;background:var(--panel);backdrop-filter:blur(2px);padding:26px 24px 30px;z-index:2}
 .person.bride .card{left:auto;right:0}
 .person h3{font-size:25px;color:#fff;margin-bottom:10px}
 .person .card p{font-size:14px;line-height:1.6}
-.ig{display:inline-flex;margin-top:14px;width:32px;height:32px;border:1px solid #fff;border-radius:50%;align-items:center;justify-content:center;color:#fff;transition:background .2s}
-.ig:hover{background:rgba(255,255,255,.18)}
+.ig{display:inline-flex;margin-top:14px;width:32px;height:32px;border:1px solid var(--cream);border-radius:50%;align-items:center;justify-content:center;color:var(--cream);transition:background .2s}
+.ig:hover{background:rgba(255,248,238,.18)}
 .ig svg{width:15px;height:15px}
 
 /* ---------- venue ---------- */
-#venue{padding:62px 0 52px;background:var(--brown-900)}
-#venue h2{font-size:40px;text-align:center;color:#fff;margin-bottom:46px}
+#venue{padding:62px 0 40px;background:var(--navy)}
+#venue>h2{font-size:40px;text-align:center;color:#fff;margin-bottom:46px}
+.event+.event{margin-top:34px}
 #venue .head{padding:0 24px}
-.pin{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:1.5;margin-bottom:14px}
-#venue h3{font-size:21px;color:#fff;margin-bottom:6px}
+.pin{width:24px;height:24px;stroke:var(--yellow);fill:none;stroke-width:1.5;margin-bottom:14px}
+#venue h3{font-size:24px;color:#fff;margin-bottom:6px}
 .date{display:flex;align-items:center;gap:12px;margin-bottom:26px}
-.date .d{font:400 48px/1 var(--serif);color:#fff}
+.date .d{font:400 48px/1 var(--serif);color:var(--yellow)}
 .date .m{font-size:13px;line-height:1.3}
-.date .line{width:44px;height:1px;background:#fff}
+.date .line{width:44px;height:1px;background:var(--cream)}
 .date .t{font-size:14px;font-weight:600}
-.vcard{background:var(--tan);color:#3b2b20;margin:0 18px;padding:24px 22px 30px;position:relative}
-.vcard .dress{font-size:14px}
-.vcard .dress em{font-weight:700}
-.swatches{display:flex;gap:10px;align-items:center;margin:14px 0 22px}
-.sw{width:22px;height:22px;border-radius:50%;border:1px solid rgba(0,0,0,.25)}
-.sw.k{background:#000}.sw.w{background:#fff}
-.nope{width:22px;height:22px;stroke:#d32f2f;stroke-width:3.4;stroke-linecap:round}
-.vcard h4{font:400 24px var(--serif);color:#31221a;margin-bottom:12px}
+.vcard{background:var(--yellow);color:var(--navy);margin:0 18px;padding:26px 22px 40px;position:relative}
+.vcard h4{font:400 24px var(--serif);color:var(--navy);margin-bottom:12px}
 .vcard address{font-style:normal;font-size:13.5px;line-height:1.65}
 .vcard .btn{position:absolute;left:18px;bottom:-22px}
 .vwrap{padding-bottom:22px}
@@ -110,32 +109,32 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:.01em}
 .fixedarea{position:relative}
 .fixedbg{position:absolute;inset:0;clip-path:inset(0)}
 .fixedbg div{position:fixed;inset:0;max-width:var(--col);margin:0 auto}
-.fixedbg::after{content:"";position:absolute;inset:0;background:rgba(40,35,35,.35)}
+.fixedbg::after{content:"";position:absolute;inset:0;background:rgba(21,25,70,.4)}
 .fixedarea>section{position:relative}
 .sec{padding:70px 22px 40px}
 .sec h2{font-size:44px;text-align:center;color:#fff;margin-bottom:34px}
-.panel{background:rgba(49,34,26,.62);padding:26px 22px 22px;margin:0 -22px}
+.panel{background:var(--panel);padding:26px 22px 22px;margin:0 -22px}
 .panel h2{margin-bottom:22px}
-.field{display:block;width:100%;border:0;border-radius:6px;background:rgba(243,235,227,.88);color:#31221a;padding:12px 14px;font:400 15px var(--sans);margin-bottom:12px}
-.field::placeholder{color:#6c6258}
+.field{display:block;width:100%;border:0;border-radius:6px;background:rgba(255,248,238,.92);color:var(--navy);padding:12px 14px;font:400 15px var(--sans);margin-bottom:12px}
+.field::placeholder{color:#5b5f85}
 textarea.field{height:140px;resize:none}
-select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2331221a' fill='none' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
-.send{width:100%;justify-content:center;margin-top:4px;border-radius:999px}
+select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23151946' fill='none' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.send{width:100%;justify-content:center;margin-top:4px}
 .left{font-size:13px;margin:-6px 0 14px}
-.ok{display:none;margin-top:12px;font-size:14px;text-align:center}
+.ok{display:none;margin-top:12px;font-size:14px;text-align:center;color:#fff}
 .ok.show{display:block}
 
 /* wishes list */
 #wishes-list{margin-top:26px;max-height:430px;overflow-y:auto;padding-right:4px}
 .wish{display:flex;gap:10px;margin-bottom:14px;animation:fadeIn .6s both}
-.av{flex:0 0 32px;width:32px;height:32px;border-radius:50%;background:#fff;color:#31221a;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
-.bubble{background:rgba(243,235,227,.9);color:#31221a;border-radius:4px 12px 12px 12px;padding:10px 14px;font-size:14px;flex:1}
+.av{flex:0 0 32px;width:32px;height:32px;border-radius:50%;background:var(--cream);color:var(--navy);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
+.bubble{background:rgba(255,248,238,.92);color:var(--navy);border-radius:4px 12px 12px 12px;padding:10px 14px;font-size:14px;flex:1;overflow-wrap:anywhere}
 .bubble b{display:block;font-size:15px}
-.bubble time{display:block;margin-top:4px;font-size:11px;color:#756a60}
+.bubble time{display:block;margin-top:4px;font-size:11px;color:#5b5f85}
 
-/* live streaming */
+/* live streaming (only shown when a link/ID is set) */
 .live h2{text-align:left;font-size:36px;margin-bottom:16px}
-.yt{display:block;position:relative;aspect-ratio:16/9;background:#1b1410;overflow:hidden;text-decoration:none;color:#fff}
+.yt{display:block;position:relative;aspect-ratio:16/9;background:#0b0d25;overflow:hidden;text-decoration:none;color:#fff}
 .yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .yt .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
 .yt .play i{width:64px;height:44px;border-radius:12px;background:#f00;display:block;position:relative}
@@ -148,27 +147,27 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
 .track::-webkit-scrollbar{display:none}
 .slide{flex:0 0 82%;aspect-ratio:3/4;scroll-snap-align:center;position:relative}
 .galwrap{position:relative}
-.arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;background:rgba(107,86,70,.85);color:#fff;display:flex;align-items:center;justify-content:center;z-index:3}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;background:rgba(255,248,238,.9);display:flex;align-items:center;justify-content:center;z-index:3}
 .arrow.prev{left:12%}.arrow.next{right:12%}
-.arrow svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.arrow svg{width:20px;height:20px;stroke:var(--navy);fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
 .dots{display:flex;justify-content:center;gap:7px;margin-top:16px}
-.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4);transition:background .3s,transform .3s}
-.dots i.on{background:#fff;transform:scale(1.35)}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,248,238,.4);transition:background .3s,transform .3s}
+.dots i.on{background:var(--yellow);transform:scale(1.35)}
 
 /* thank you */
 #thanks{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:space-between}
-#thanks .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(49,34,26,.35),rgba(49,34,26,.05) 55%,rgba(49,34,26,.4))}
-#thanks h2{position:relative;font-size:44px;text-align:center;color:rgba(255,255,255,.85);padding-top:12%}
-#thanks .foot{position:relative;background:rgba(107,86,70,.82);padding:14px 22px;font-size:12.5px;padding-right:76px;min-height:56px}
+#thanks .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(21,25,70,.4),rgba(21,25,70,.05) 55%,rgba(21,25,70,.45))}
+#thanks h2{position:relative;font-size:44px;text-align:center;color:rgba(255,255,255,.9);padding-top:12%}
+#thanks .foot{position:relative;background:rgba(21,25,70,.82);padding:14px 22px;font-size:12.5px;padding-right:76px;min-height:56px}
 
 /* music button */
-#music{position:fixed;bottom:22px;right:max(16px,calc(50% - var(--col)/2 + 16px));z-index:40;width:44px;height:44px;border-radius:50%;border:3px solid #fff;background:var(--pink);cursor:pointer;display:none;align-items:center;justify-content:center;animation:glow 2s infinite}
+#music{position:fixed;bottom:22px;right:max(16px,calc(50% - var(--col)/2 + 16px));z-index:40;width:44px;height:44px;border-radius:50%;border:3px solid var(--yellow);background:var(--cream);cursor:pointer;display:none;align-items:center;justify-content:center;animation:glow 2s infinite}
 #music.show{display:flex}
-#music svg{width:16px;height:16px;fill:#fff}
+#music svg{width:16px;height:16px;fill:var(--navy)}
 #music .i-play{display:none}
 #music.paused .i-play{display:block}#music.paused .i-pause{display:none}
 #music.paused{animation:none}
-@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(225,29,116,.55)}60%{box-shadow:0 0 0 18px rgba(225,29,116,0)}}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(255,207,123,.6)}60%{box-shadow:0 0 0 18px rgba(255,207,123,0)}}
 
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -186,7 +185,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
     <div class="shade"></div>
     <div class="txt">
       <p>With joyful hearts, we invite you to celebrate the beginning of our forever.</p>
-      <h1>Arbani<span>&amp;</span>Raissa</h1>
+      <h1>Gerry<span>&amp;</span>Bella</h1>
       <button class="btn" id="openBtn" type="button">
         Open the Invitation
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9 6 9-6"/><path d="M5 20h14a2 2 0 002-2V8l-9-6-9 6v10a2 2 0 002 2z"/></svg>
@@ -200,7 +199,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   <!-- ===== HERO ===== -->
   <section id="hero" class="ph" data-photo="hero">
     <div class="shade"></div>
-    <h1>Arbani<span>&amp;</span>Raissa</h1>
+    <h1>Gerry<span>&amp;</span>Bella</h1>
     <div class="bottom">
       <div class="chev" aria-hidden="true">
         <svg viewBox="0 0 26 14"><path d="M2 2l11 9 11-9"/></svg>
@@ -213,10 +212,17 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
         <div><b id="cd-m">00</b><small>Mins</small></div>
         <div><b id="cd-s">00</b><small>Secs</small></div>
       </div>
-      <a class="btn" id="saveDate" target="_blank" rel="noopener">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M12 18l-2.2-2.1a1.6 1.6 0 112.2-2.3 1.6 1.6 0 112.2 2.3z"/></svg>
-        Save the Date
-      </a>
+      <div class="savewrap">
+        <button class="btn" id="saveBtn" type="button" aria-expanded="false" aria-controls="saveMenu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M12 18l-2.2-2.1a1.6 1.6 0 112.2-2.3 1.6 1.6 0 112.2 2.3z"/></svg>
+          Save the Date
+        </button>
+        <div class="savemenu" id="saveMenu" hidden>
+          <p class="savenote">Both events are in the file that just downloaded. Prefer Google Calendar? Add them here:</p>
+          <a id="cal0" target="_blank" rel="noopener">Holy Matrimony</a>
+          <a id="cal1" target="_blank" rel="noopener">Reception</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -229,44 +235,62 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
   <section class="person groom ph" data-photo="groom">
     <h2 class="rv">The Groom</h2>
     <div class="card rv">
-      <h3>Arbani Yasiz</h3>
-      <p>Putra dari<br>(Alm.) Bapak Zulchairy Yahya<br>&amp;<br>Ibu Siti Zaleha Libra Waty</p>
-      <a class="ig" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <h3>Genesius Yoshua Gerry Sanjaya</h3>
+      <p>The only son of<br>Mr. Teddy S.<br>&amp;<br>Mrs. Juniartati</p>
+      <a class="ig" id="ig-groom" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
     </div>
   </section>
 
   <section class="person bride ph" data-photo="bride">
     <h2 class="rv">The Bride</h2>
     <div class="card rv">
-      <h3>Raissa P. Ramadhani</h3>
-      <p>Putri dari<br>Bapak H. Zainuddin MH, SE<br>&amp;<br>(almh.) Ibu Hj. Nurlaela</p>
-      <a class="ig" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+      <h3>Christina Anastasia Bellani</h3>
+      <p>The second daughter of<br>Mr. Orga B.<br>&amp;<br>Mrs. Justiani</p>
+      <a class="ig" id="ig-bride" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
     </div>
   </section>
 
   <!-- ===== VENUE ===== -->
   <section id="venue">
     <h2 class="rv">Venue</h2>
-    <div class="head rv">
-      <svg class="pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>
-      <h3>Acara Pernikahan</h3>
-      <div class="date">
-        <span class="d">09</span>
-        <span class="m">Saturday,<br>August 2025</span>
-        <span class="line"></span>
-        <span class="t">19:00 - 21:00</span>
+
+    <div class="event">
+      <div class="head rv">
+        <svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        <h3>Holy Matrimony</h3>
+        <div class="date">
+          <span class="d">05</span>
+          <span class="m">Saturday,<br>December 2026</span>
+          <span class="line"></span>
+          <span class="t">10:00 WIB</span>
+        </div>
+      </div>
+      <div class="vwrap">
+        <div class="vcard rv">
+          <h4>St. Kristoforus Church Grogol</h4>
+          <address>Jl. Satria IV No.68, Grogol Petamburan, Jakarta Barat</address>
+          <a class="btn" id="loc0" target="_blank" rel="noopener">Location</a>
+        </div>
       </div>
     </div>
-    <div class="vwrap">
-      <div class="vcard rv">
-        <p class="dress"><em>Dress code:</em><br>Dengan hormat, kami memohon kepada para tamu undangan untuk <b>tidak</b> mengenakan pakaian berwarna <b>hitam</b> atau <b>putih</b> pada hari pernikahan kami.</p>
-        <div class="swatches" aria-hidden="true">
-          <span class="sw k"></span><span class="sw w"></span>
-          <svg class="nope" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" fill="none"/></svg>
+
+    <div class="event">
+      <div class="head rv">
+        <svg class="pin" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>
+        <h3>Reception</h3>
+        <div class="date">
+          <span class="d">05</span>
+          <span class="m">Saturday,<br>December 2026</span>
+          <span class="line"></span>
+          <span class="t">18:30 WIB</span>
         </div>
-        <h4>Grha Pertamina Ballroom</h4>
-        <address>Jl. Medan Merdeka Tim. No.11-13, RT.6/RW.1, Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110, Indonesia</address>
-        <a class="btn" id="locBtn" target="_blank" rel="noopener">Location</a>
+      </div>
+      <div class="vwrap">
+        <div class="vcard rv">
+          <h4>Soho Residence Ballroom, 9th Floor</h4>
+          <address>Central Park 2, Jl. Letjen S. Parman No.Kav. 28, Grogol Petamburan, Jakarta Barat</address>
+          <a class="btn" id="loc1" target="_blank" rel="noopener">Location</a>
+        </div>
       </div>
     </div>
   </section>
@@ -287,7 +311,11 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
           <option>Sorry, I can’t attend</option>
           <option>Maybe</option>
         </select>
-        <input class="field" name="guests" type="number" min="1" max="10" placeholder="Number of Guest">
+        <select class="field" name="guests">
+          <option value="">Number of Guest (max. 2)</option>
+          <option value="1">1 guest</option>
+          <option value="2">2 guests</option>
+        </select>
         <button class="btn send" type="submit">Send</button>
         <p class="ok" id="rsvpOk">Thank you! Your RSVP has been sent.</p>
       </form>
@@ -297,7 +325,7 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
       <div class="panel rv">
         <h2>Wedding Wishes</h2>
         <form id="wishForm" novalidate>
-          <input class="field" name="name" placeholder="Name" required>
+          <input class="field" name="name" placeholder="Name" maxlength="60" required>
           <textarea class="field" name="msg" id="msg" maxlength="300" placeholder="Write your wishes" required></textarea>
           <p class="left">Characters left: <span id="left">300</span></p>
           <button class="btn send" type="submit">Send</button>
@@ -306,7 +334,8 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
       <div id="wishes-list" aria-live="polite"></div>
     </section>
 
-    <section class="sec live" id="live" style="padding-top:30px">
+    <!-- Live streaming: hidden until youtubeId or youtubeUrl is set in CONFIG -->
+    <section class="sec live" id="live" style="padding-top:30px" hidden>
       <div class="panel rv" style="margin-bottom:-4px">
         <h2>Live Streaming</h2>
       </div>
@@ -348,38 +377,100 @@ select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xml
    EDIT THIS BLOCK – everything you need to personalise is here
    ===================================================================== */
 const CONFIG = {
-  // Wedding date/time (with timezone). WIB = +07:00
-  eventStart: "2025-08-09T19:00:00+07:00",
-  eventEnd:   "2025-08-09T21:00:00+07:00",
-  eventTitle: "Wedding of Arbani & Raissa",
-  venueName:  "Grha Pertamina Ballroom",
-  venueAddress: "Jl. Medan Merdeka Tim. No.11-13, Gambir, Jakarta Pusat 10110",
-  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Grha+Pertamina+Ballroom+Jakarta",
+  // Countdown target (Holy Matrimony). WIB = +07:00
+  countdownTo: "2026-12-05T10:00:00+07:00",
 
-  // Paste direct image links (https://…jpg/png). Empty = brown placeholder.
-  // Google Drive tip: use https://lh3.googleusercontent.com/d/FILE_ID  (file shared as "Anyone with link")
-  photos: {
-    cover: "", hero: "", groom: "", bride: "", rsvp: "", thanks: "",
-    gallery: []            // add up to ~10 links, e.g. ["https://…/1.jpg","https://…/2.jpg"]
+  // Events used by the "Save the Date" button and the Location buttons.
+  // durationMin = how long the calendar entry lasts (change when you know the real end time).
+  events: [
+    { title: "Holy Matrimony – Gerry & Bella",
+      start: "2026-12-05T10:00:00+07:00", durationMin: 120,
+      place: "St. Kristoforus Church Grogol",
+      address: "Jl. Satria IV No.68, Grogol Petamburan, Jakarta Barat",
+      maps: "https://share.google/q1fVy8UJIpvoFyxAB" },
+    { title: "Reception – Gerry & Bella",
+      start: "2026-12-05T18:30:00+07:00", durationMin: 120,
+      place: "Soho Residence Ballroom, 9th Floor, Central Park 2",
+      address: "Jl. Letjen S. Parman No.Kav. 28, Grogol Petamburan, Jakarta Barat",
+      maps: "https://share.google/bNWS5iHfTL3sjgxS3" }
+  ],
+
+  instagram: {
+    groom: "https://instagram.com/yoshua.g.s",
+    bride: "https://instagram.com/anbellani"
   },
 
-  musicUrl: "",            // direct .mp3 link (optional)
-  youtubeId: "",           // e.g. "dQw4w9WgXcQ"  (the part after v=) – shows the video inside the card
-  youtubeUrl: "",          // full link used by the "Join Youtube" button
+  // Photos are files in the "images" folder of this repository.
+  photos: {
+    cover:  "images/cover.jpg",
+    hero:   "images/home.jpg",
+    groom:  "images/groom.jpg",
+    bride:  "images/bride.jpg",
+    rsvp:   "images/home.jpg",
+    thanks: "images/home.jpg",
+    gallery: ["images/gallery-1.jpg","images/gallery-2.jpg","images/gallery-3.jpg","images/gallery-4.jpg","images/gallery-5.jpg"]
+  },
 
-  // Optional: Google Apps Script web-app URL to store RSVPs & wishes in a Google Sheet.
-  // Leave empty and the forms still work on screen, but nothing is saved.
+  musicUrl: "music.mp3",   // upload an .mp3 named music.mp3 next to index.html (or leave "" for no music)
+
+  youtubeId: "",           // live stream video ID (after v=). Empty = Live Streaming section stays hidden
+  youtubeUrl: "",          // full live stream link for the "Join Youtube" button
+
+  // Google Apps Script web-app URL that saves RSVPs & wishes to your Google Sheet.
+  // Empty = forms work on screen only, nothing is saved.
   submitUrl: ""
 };
 /* ===================================================================== */
 
 const $ = s => document.querySelector(s);
 const $$ = s => [...document.querySelectorAll(s)];
+const FALLBACK = 'linear-gradient(160deg,#3a3f8a 0%,#252b6b 60%,#151946 100%)';
+const bgFor = url => `url("${url}"), ${FALLBACK}`;
 
 /* photos */
 $$('[data-photo]').forEach(el => {
   const url = CONFIG.photos[el.dataset.photo];
-  if (url) el.style.backgroundImage = `url("${url}")`;
+  if (url) el.style.backgroundImage = bgFor(url);
+});
+
+/* links */
+$('#ig-groom').href = CONFIG.instagram.groom;
+$('#ig-bride').href = CONFIG.instagram.bride;
+CONFIG.events.forEach((ev, i) => { $('#loc' + i).href = ev.maps; });
+
+/* save the date: opens a small menu with one calendar link per event */
+const g = d => new Date(d).toISOString().replace(/[-:]|\.\d{3}/g,'');
+CONFIG.events.forEach((ev, i) => {
+  const end = new Date(new Date(ev.start).getTime() + ev.durationMin * 60000);
+  $('#cal' + i).href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+    + '&text=' + encodeURIComponent(ev.title)
+    + '&dates=' + g(ev.start) + '/' + g(end)
+    + '&location=' + encodeURIComponent(ev.place + ', ' + ev.address);
+});
+/* one button saves BOTH events: downloads a calendar file (.ics) that
+   Apple, Google, Outlook and Android calendars can open and add together */
+function buildIcs(){
+  const esc = s => String(s).replace(/\\/g,'\\\\').replace(/\n/g,'\\n').replace(/,/g,'\\,').replace(/;/g,'\\;');
+  const fold = l => l.match(/.{1,70}/g).join('\r\n ');
+  const lines = ['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Gerry and Bella Wedding//EN','CALSCALE:GREGORIAN','METHOD:PUBLISH'];
+  CONFIG.events.forEach((ev, i) => {
+    const end = new Date(new Date(ev.start).getTime() + ev.durationMin * 60000);
+    lines.push('BEGIN:VEVENT', 'UID:gerry-bella-' + i + '@wedding-invitation',
+      'DTSTAMP:' + g(new Date()), 'DTSTART:' + g(ev.start), 'DTEND:' + g(end),
+      'SUMMARY:' + esc(ev.title), 'LOCATION:' + esc(ev.place + ', ' + ev.address), 'END:VEVENT');
+  });
+  lines.push('END:VCALENDAR');
+  return lines.map(fold).join('\r\n') + '\r\n';
+}
+$('#saveBtn').addEventListener('click', () => {
+  const blob = new Blob([buildIcs()], {type:'text/calendar;charset=utf-8'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'Gerry-and-Bella-Wedding.ics';
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 4000);
+  $('#saveMenu').hidden = false;                 /* shows the Google Calendar links as a backup */
+  $('#saveBtn').setAttribute('aria-expanded', 'true');
 });
 
 /* open invitation */
@@ -400,12 +491,12 @@ function startMusic(){
 }
 mbtn.addEventListener('click', () => {
   if (!CONFIG.musicUrl) return;
-  if (audio.paused) { audio.play(); mbtn.classList.remove('paused'); mbtn.setAttribute('aria-label','Pause music'); }
+  if (audio.paused) { audio.play().catch(()=>{}); mbtn.classList.remove('paused'); mbtn.setAttribute('aria-label','Pause music'); }
   else { audio.pause(); mbtn.classList.add('paused'); mbtn.setAttribute('aria-label','Play music'); }
 });
 
 /* countdown */
-const target = new Date(CONFIG.eventStart).getTime();
+const target = new Date(CONFIG.countdownTo).getTime();
 const pad = n => String(n).padStart(2,'0');
 function tick(){
   let d = Math.max(0, target - Date.now());
@@ -418,25 +509,20 @@ function tick(){
 }
 tick(); setInterval(tick, 1000);
 
-/* save the date + location */
-const g = d => new Date(d).toISOString().replace(/[-:]|\.\d{3}/g,'');
-$('#saveDate').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
-  + '&text=' + encodeURIComponent(CONFIG.eventTitle)
-  + '&dates=' + g(CONFIG.eventStart) + '/' + g(CONFIG.eventEnd)
-  + '&location=' + encodeURIComponent(CONFIG.venueName + ', ' + CONFIG.venueAddress);
-$('#locBtn').href = CONFIG.mapsUrl;
-
 /* scroll reveal */
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:.15});
 $$('.rv').forEach(el => io.observe(el));
 
-/* youtube */
-const yt = $('#yt');
-if (CONFIG.youtubeId){
-  yt.removeAttribute('href');
-  yt.innerHTML = `<iframe src="https://www.youtube.com/embed/${CONFIG.youtubeId}" title="Live streaming" allowfullscreen loading="lazy"></iframe>`;
-} else if (CONFIG.youtubeUrl){ yt.href = CONFIG.youtubeUrl; }
-$('#ytBtn').href = CONFIG.youtubeUrl || (CONFIG.youtubeId ? 'https://www.youtube.com/watch?v=' + CONFIG.youtubeId : '#');
+/* live streaming (shown only when configured) */
+if (CONFIG.youtubeId || CONFIG.youtubeUrl){
+  $('#live').hidden = false;
+  const yt = $('#yt');
+  if (CONFIG.youtubeId){
+    yt.removeAttribute('href');
+    yt.innerHTML = `<iframe src="https://www.youtube.com/embed/${encodeURIComponent(CONFIG.youtubeId)}" title="Live streaming" allowfullscreen loading="lazy"></iframe>`;
+  } else { yt.href = CONFIG.youtubeUrl; }
+  $('#ytBtn').href = CONFIG.youtubeUrl || ('https://www.youtube.com/watch?v=' + CONFIG.youtubeId);
+}
 
 /* forms */
 function post(payload){
@@ -446,28 +532,46 @@ function post(payload){
 $('#rsvpForm').addEventListener('submit', e => {
   e.preventDefault();
   const f = e.target;
-  if (!f.name.value.trim() || !f.attendance.value){ f.name.reportValidity?.(); (f.name.value.trim() ? f.attendance : f.name).focus(); return; }
+  if (!f.name.value.trim() || !f.attendance.value){ (f.name.value.trim() ? f.attendance : f.name).focus(); return; }
   post({type:'rsvp', ...Object.fromEntries(new FormData(f))});
   f.reset(); $('#rsvpOk').classList.add('show');
 });
 
 const list = $('#wishes-list');
-const sample = [
-  {n:'Sample guest', m:'Selamat menempuh hidup baru! Semoga sakinah, mawaddah, warahmah.', t:'1 year ago'},
-  {n:'Sample guest', m:'Happy wedding! Wishing you a lifetime of love, laughter and happiness.', t:'1 year ago'}
-];
+function ago(t){
+  const s = (Date.now() - new Date(t)) / 1000;
+  if (isNaN(s)) return '';
+  if (s < 60) return 'just now';
+  if (s < 3600) return Math.floor(s/60) + ' min ago';
+  if (s < 86400) return Math.floor(s/3600) + ' hr ago';
+  return Math.floor(s/86400) + ' days ago';
+}
 function addWish(w, top){
   const el = document.createElement('div');
   el.className = 'wish';
-  const av = document.createElement('div'); av.className = 'av'; av.textContent = (w.n[0] || '?').toUpperCase();
+  const av = document.createElement('div'); av.className = 'av'; av.textContent = (String(w.n)[0] || '?').toUpperCase();
   const b = document.createElement('div'); b.className = 'bubble';
   const n = document.createElement('b'); n.textContent = w.n;
   const p = document.createElement('span'); p.textContent = w.m;
-  const t = document.createElement('time'); t.textContent = w.t;
+  const t = document.createElement('time'); t.textContent = w.t || '';
   b.append(n, p, t); el.append(av, b);
   top ? list.prepend(el) : list.append(el);
 }
-sample.forEach(w => addWish(w));
+const sample = [
+  {n:'Sample guest', m:'Wishing you a lifetime of love, laughter and happiness!', t:''},
+  {n:'Sample guest', m:'Congratulations on your wedding! God bless your marriage.', t:''}
+];
+async function loadWishes(){
+  if (CONFIG.submitUrl){
+    try {
+      const rows = await (await fetch(CONFIG.submitUrl)).json();
+      rows.forEach(w => addWish({n:w.name, m:w.message, t:ago(w.time)}));
+      return;
+    } catch(e) {}
+  }
+  sample.forEach(w => addWish(w));
+}
+loadWishes();
 $('#msg').addEventListener('input', e => $('#left').textContent = 300 - e.target.value.length);
 $('#wishForm').addEventListener('submit', e => {
   e.preventDefault();
@@ -480,12 +584,12 @@ $('#wishForm').addEventListener('submit', e => {
 
 /* gallery */
 const track = $('#track'), dots = $('#dots');
-const gal = CONFIG.photos.gallery.length ? CONFIG.photos.gallery : Array(8).fill('');
-gal.forEach((url, i) => {
+const gal = CONFIG.photos.gallery.length ? CONFIG.photos.gallery : Array(5).fill('');
+gal.forEach(url => {
   const s = document.createElement('div'); s.className = 'slide ph';
-  if (url) s.style.backgroundImage = `url("${url}")`;
+  if (url) s.style.backgroundImage = bgFor(url);
   track.append(s);
-  const d = document.createElement('i'); dots.append(d);
+  dots.append(document.createElement('i'));
 });
 let idx = 0, auto;
 const slides = () => [...track.children];
