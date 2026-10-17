@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arbani &amp; Raissa – Wedding Invitation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Italiana&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --brown-900:#31221a;      /* main dark background */
+  --brown-600:#6b5646;      /* buttons, panels */
+  --tan:#beaf9e;            /* venue card */
+  --cream:#f3ebe3;
+  --pink:#e11d74;           /* music button */
+  --serif:'Italiana','Cormorant Garamond',Georgia,serif;
+  --sans:'Nunito','Segoe UI',Arial,sans-serif;
+  --col:480px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--brown-900);color:var(--cream);font-family:var(--sans);font-size:15px;line-height:1.55;-webkit-font-smoothing:antialiased}
+body.locked{overflow:hidden;height:100vh}
+.wrap{max-width:var(--col);margin:0 auto;position:relative;overflow:hidden;background:var(--brown-900)}
+h1,h2,h3{font-family:var(--serif);font-weight:400;letter-spacing:.01em}
+.title{font-size:44px;line-height:1.1;text-align:center;color:#fff}
+
+/* photo placeholders: replaced by CONFIG.photos */
+.ph{background:linear-gradient(160deg,#8a735f 0%,#4a362b 60%,#31221a 100%);background-size:cover;background-position:center}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;gap:8px;border:0;cursor:pointer;font:600 15px var(--sans);color:var(--cream);background:var(--brown-600);padding:12px 24px;border-radius:999px;text-decoration:none;transition:filter .2s,transform .2s}
+.btn:hover{filter:brightness(1.12)}
+.btn:active{transform:scale(.97)}
+.btn svg{width:18px;height:18px}
+:focus-visible{outline:2px solid #fff;outline-offset:3px}
+
+/* ---------- cover ---------- */
+#cover{position:fixed;inset:0;z-index:50;display:flex;justify-content:center;background:#111;transition:transform 1.1s cubic-bezier(.77,0,.18,1)}
+#cover.open{transform:translateY(-100%)}
+#cover .inner{position:relative;width:100%;max-width:var(--col);height:100%;overflow:hidden}
+#cover .bg{position:absolute;inset:0;filter:grayscale(1);transform:scale(1.06);animation:slowzoom 14s ease-out forwards}
+#cover .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.55) 0%,rgba(0,0,0,.1) 55%,rgba(0,0,0,.3) 100%)}
+#cover .txt{position:absolute;left:24px;right:24px;top:15%}
+#cover p{font-size:15px;max-width:300px;opacity:0;animation:fadeIn 1.2s .4s forwards}
+#cover h1{font-size:50px;line-height:1.05;margin:26px 0 24px;opacity:0;animation:fadeIn 1.4s 1s forwards}
+#cover h1 span{display:block;font-size:22px;margin:4px 0 4px 2px}
+#cover .btn{opacity:0;animation:fadeIn 1.2s 1.8s forwards,pulse 2.4s 3s infinite;background:rgba(107,86,70,.85);backdrop-filter:blur(4px)}
+@keyframes slowzoom{to{transform:scale(1)}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(243,235,227,.35)}50%{box-shadow:0 0 0 10px rgba(243,235,227,0)}}
+
+/* ---------- hero ---------- */
+#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;justify-content:space-between;padding:12% 24px 8%}
+#hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(40,35,35,.55),rgba(40,35,35,.05) 45%,rgba(49,34,26,.5))}
+#hero>*{position:relative}
+#hero h1{font-size:50px;line-height:1.05;color:#fff}
+#hero h1 span{display:block;font-size:22px;margin:4px 0 4px 2px}
+#hero .bottom{display:flex;flex-direction:column;align-items:flex-start;gap:26px}
+.chev{align-self:center;display:flex;flex-direction:column;margin-bottom:-6px}
+.chev svg{width:26px;height:14px;margin-top:-4px;stroke:#fff;fill:none;stroke-width:1.6;opacity:.25;animation:chev 1.6s infinite}
+.chev svg:nth-child(2){animation-delay:.2s}.chev svg:nth-child(3){animation-delay:.4s}
+@keyframes chev{0%{opacity:.1;transform:translateY(-3px)}50%{opacity:.9}100%{opacity:.1;transform:translateY(5px)}}
+.count{display:flex;gap:22px;align-self:center;text-align:center}
+.count b{display:block;font:400 34px/1 var(--serif);color:#fff}
+.count small{font-size:13px;font-weight:600;color:#fff}
+
+/* ---------- reveal on scroll ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity 1s ease,transform 1s ease}
+.rv.in{opacity:1;transform:none}
+
+/* ---------- bride & groom ---------- */
+#intro{padding:60px 24px 28px;background:var(--brown-900)}
+#intro h2{font-size:34px;color:#fff;margin-bottom:16px}
+.person{position:relative;min-height:88vh;display:flex;flex-direction:column}
+.person h2{position:relative;z-index:2;font-size:46px;text-align:center;color:#fff;padding-top:26px}
+.person .card{position:absolute;left:0;bottom:0;width:86%;background:rgba(49,34,26,.62);backdrop-filter:blur(2px);padding:26px 24px 30px;z-index:2}
+.person.bride .card{left:auto;right:0}
+.person h3{font-size:25px;color:#fff;margin-bottom:10px}
+.person .card p{font-size:14px;line-height:1.6}
+.ig{display:inline-flex;margin-top:14px;width:32px;height:32px;border:1px solid #fff;border-radius:50%;align-items:center;justify-content:center;color:#fff;transition:background .2s}
+.ig:hover{background:rgba(255,255,255,.18)}
+.ig svg{width:15px;height:15px}
+
+/* ---------- venue ---------- */
+#venue{padding:62px 0 52px;background:var(--brown-900)}
+#venue h2{font-size:40px;text-align:center;color:#fff;margin-bottom:46px}
+#venue .head{padding:0 24px}
+.pin{width:24px;height:24px;stroke:#fff;fill:none;stroke-width:1.5;margin-bottom:14px}
+#venue h3{font-size:21px;color:#fff;margin-bottom:6px}
+.date{display:flex;align-items:center;gap:12px;margin-bottom:26px}
+.date .d{font:400 48px/1 var(--serif);color:#fff}
+.date .m{font-size:13px;line-height:1.3}
+.date .line{width:44px;height:1px;background:#fff}
+.date .t{font-size:14px;font-weight:600}
+.vcard{background:var(--tan);color:#3b2b20;margin:0 18px;padding:24px 22px 30px;position:relative}
+.vcard .dress{font-size:14px}
+.vcard .dress em{font-weight:700}
+.swatches{display:flex;gap:10px;align-items:center;margin:14px 0 22px}
+.sw{width:22px;height:22px;border-radius:50%;border:1px solid rgba(0,0,0,.25)}
+.sw.k{background:#000}.sw.w{background:#fff}
+.nope{width:22px;height:22px;stroke:#d32f2f;stroke-width:3.4;stroke-linecap:round}
+.vcard h4{font:400 24px var(--serif);color:#31221a;margin-bottom:12px}
+.vcard address{font-style:normal;font-size:13.5px;line-height:1.65}
+.vcard .btn{position:absolute;left:18px;bottom:-22px}
+.vwrap{padding-bottom:22px}
+
+/* ---------- form area over fixed photo ---------- */
+.fixedarea{position:relative}
+.fixedbg{position:absolute;inset:0;clip-path:inset(0)}
+.fixedbg div{position:fixed;inset:0;max-width:var(--col);margin:0 auto}
+.fixedbg::after{content:"";position:absolute;inset:0;background:rgba(40,35,35,.35)}
+.fixedarea>section{position:relative}
+.sec{padding:70px 22px 40px}
+.sec h2{font-size:44px;text-align:center;color:#fff;margin-bottom:34px}
+.panel{background:rgba(49,34,26,.62);padding:26px 22px 22px;margin:0 -22px}
+.panel h2{margin-bottom:22px}
+.field{display:block;width:100%;border:0;border-radius:6px;background:rgba(243,235,227,.88);color:#31221a;padding:12px 14px;font:400 15px var(--sans);margin-bottom:12px}
+.field::placeholder{color:#6c6258}
+textarea.field{height:140px;resize:none}
+select.field{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%2331221a' fill='none' stroke-width='1.6'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center}
+.send{width:100%;justify-content:center;margin-top:4px;border-radius:999px}
+.left{font-size:13px;margin:-6px 0 14px}
+.ok{display:none;margin-top:12px;font-size:14px;text-align:center}
+.ok.show{display:block}
+
+/* wishes list */
+#wishes-list{margin-top:26px;max-height:430px;overflow-y:auto;padding-right:4px}
+.wish{display:flex;gap:10px;margin-bottom:14px;animation:fadeIn .6s both}
+.av{flex:0 0 32px;width:32px;height:32px;border-radius:50%;background:#fff;color:#31221a;font-weight:700;display:flex;align-items:center;justify-content:center;font-size:14px}
+.bubble{background:rgba(243,235,227,.9);color:#31221a;border-radius:4px 12px 12px 12px;padding:10px 14px;font-size:14px;flex:1}
+.bubble b{display:block;font-size:15px}
+.bubble time{display:block;margin-top:4px;font-size:11px;color:#756a60}
+
+/* live streaming */
+.live h2{text-align:left;font-size:36px;margin-bottom:16px}
+.yt{display:block;position:relative;aspect-ratio:16/9;background:#1b1410;overflow:hidden;text-decoration:none;color:#fff}
+.yt iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+.yt .play{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+.yt .play i{width:64px;height:44px;border-radius:12px;background:#f00;display:block;position:relative}
+.yt .play i::after{content:"";position:absolute;left:26px;top:13px;border-left:16px solid #fff;border-top:9px solid transparent;border-bottom:9px solid transparent}
+.live .btn{width:100%;justify-content:center;margin-top:12px}
+
+/* gallery */
+.gal{padding:30px 0 56px}
+.track{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;padding:0 9%;scroll-padding:0 9%;scrollbar-width:none}
+.track::-webkit-scrollbar{display:none}
+.slide{flex:0 0 82%;aspect-ratio:3/4;scroll-snap-align:center;position:relative}
+.galwrap{position:relative}
+.arrow{position:absolute;top:50%;transform:translateY(-50%);width:46px;height:46px;border-radius:50%;border:0;cursor:pointer;background:rgba(107,86,70,.85);color:#fff;display:flex;align-items:center;justify-content:center;z-index:3}
+.arrow.prev{left:12%}.arrow.next{right:12%}
+.arrow svg{width:20px;height:20px;stroke:#fff;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
+.dots{display:flex;justify-content:center;gap:7px;margin-top:16px}
+.dots i{width:7px;height:7px;border-radius:50%;background:rgba(255,255,255,.4);transition:background .3s,transform .3s}
+.dots i.on{background:#fff;transform:scale(1.35)}
+
+/* thank you */
+#thanks{position:relative;min-height:92vh;display:flex;flex-direction:column;justify-content:space-between}
+#thanks .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(49,34,26,.35),rgba(49,34,26,.05) 55%,rgba(49,34,26,.4))}
+#thanks h2{position:relative;font-size:44px;text-align:center;color:rgba(255,255,255,.85);padding-top:12%}
+#thanks .foot{position:relative;background:rgba(107,86,70,.82);padding:14px 22px;font-size:12.5px;padding-right:76px;min-height:56px}
+
+/* music button */
+#music{position:fixed;bottom:22px;right:max(16px,calc(50% - var(--col)/2 + 16px));z-index:40;width:44px;height:44px;border-radius:50%;border:3px solid #fff;background:var(--pink);cursor:pointer;display:none;align-items:center;justify-content:center;animation:glow 2s infinite}
+#music.show{display:flex}
+#music svg{width:16px;height:16px;fill:#fff}
+#music .i-play{display:none}
+#music.paused .i-play{display:block}#music.paused .i-pause{display:none}
+#music.paused{animation:none}
+@keyframes glow{0%,100%{box-shadow:0 0 0 0 rgba(225,29,116,.55)}60%{box-shadow:0 0 0 18px rgba(225,29,116,0)}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .rv{opacity:1;transform:none}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body class="locked">
+
+<!-- ===== COVER ===== -->
+<div id="cover">
+  <div class="inner">
+    <div class="bg ph" data-photo="cover"></div>
+    <div class="shade"></div>
+    <div class="txt">
+      <p>With joyful hearts, we invite you to celebrate the beginning of our forever.</p>
+      <h1>Arbani<span>&amp;</span>Raissa</h1>
+      <button class="btn" id="openBtn" type="button">
+        Open the Invitation
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9 6 9-6"/><path d="M5 20h14a2 2 0 002-2V8l-9-6-9 6v10a2 2 0 002 2z"/></svg>
+      </button>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+
+  <!-- ===== HERO ===== -->
+  <section id="hero" class="ph" data-photo="hero">
+    <div class="shade"></div>
+    <h1>Arbani<span>&amp;</span>Raissa</h1>
+    <div class="bottom">
+      <div class="chev" aria-hidden="true">
+        <svg viewBox="0 0 26 14"><path d="M2 2l11 9 11-9"/></svg>
+        <svg viewBox="0 0 26 14"><path d="M2 2l11 9 11-9"/></svg>
+        <svg viewBox="0 0 26 14"><path d="M2 2l11 9 11-9"/></svg>
+      </div>
+      <div class="count" id="count" aria-label="Countdown to the wedding">
+        <div><b id="cd-d">00</b><small>Days</small></div>
+        <div><b id="cd-h">00</b><small>Hours</small></div>
+        <div><b id="cd-m">00</b><small>Mins</small></div>
+        <div><b id="cd-s">00</b><small>Secs</small></div>
+      </div>
+      <a class="btn" id="saveDate" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/><path d="M12 18l-2.2-2.1a1.6 1.6 0 112.2-2.3 1.6 1.6 0 112.2 2.3z"/></svg>
+        Save the Date
+      </a>
+    </div>
+  </section>
+
+  <!-- ===== BRIDE & GROOM ===== -->
+  <section id="intro">
+    <h2 class="rv">Bride &amp; Groom</h2>
+    <p class="rv">We’re getting hitched! And we’d be delighted if you could join our wedding!</p>
+  </section>
+
+  <section class="person groom ph" data-photo="groom">
+    <h2 class="rv">The Groom</h2>
+    <div class="card rv">
+      <h3>Arbani Yasiz</h3>
+      <p>Putra dari<br>(Alm.) Bapak Zulchairy Yahya<br>&amp;<br>Ibu Siti Zaleha Libra Waty</p>
+      <a class="ig" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+    </div>
+  </section>
+
+  <section class="person bride ph" data-photo="bride">
+    <h2 class="rv">The Bride</h2>
+    <div class="card rv">
+      <h3>Raissa P. Ramadhani</h3>
+      <p>Putri dari<br>Bapak H. Zainuddin MH, SE<br>&amp;<br>(almh.) Ibu Hj. Nurlaela</p>
+      <a class="ig" href="#" target="_blank" rel="noopener" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+    </div>
+  </section>
+
+  <!-- ===== VENUE ===== -->
+  <section id="venue">
+    <h2 class="rv">Venue</h2>
+    <div class="head rv">
+      <svg class="pin" viewBox="0 0 24 24"><path d="M12 22s7-6.2 7-12a7 7 0 10-14 0c0 5.8 7 12 7 12z"/><circle cx="12" cy="10" r="2.6"/></svg>
+      <h3>Acara Pernikahan</h3>
+      <div class="date">
+        <span class="d">09</span>
+        <span class="m">Saturday,<br>August 2025</span>
+        <span class="line"></span>
+        <span class="t">19:00 - 21:00</span>
+      </div>
+    </div>
+    <div class="vwrap">
+      <div class="vcard rv">
+        <p class="dress"><em>Dress code:</em><br>Dengan hormat, kami memohon kepada para tamu undangan untuk <b>tidak</b> mengenakan pakaian berwarna <b>hitam</b> atau <b>putih</b> pada hari pernikahan kami.</p>
+        <div class="swatches" aria-hidden="true">
+          <span class="sw k"></span><span class="sw w"></span>
+          <svg class="nope" viewBox="0 0 24 24"><path d="M4 4l16 16M20 4L4 20" fill="none"/></svg>
+        </div>
+        <h4>Grha Pertamina Ballroom</h4>
+        <address>Jl. Medan Merdeka Tim. No.11-13, RT.6/RW.1, Gambir, Kecamatan Gambir, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110, Indonesia</address>
+        <a class="btn" id="locBtn" target="_blank" rel="noopener">Location</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== RSVP / WISHES / LIVE / GALLERY (shared fixed photo) ===== -->
+  <div class="fixedarea">
+    <div class="fixedbg"><div class="ph" data-photo="rsvp"></div></div>
+
+    <section class="sec" id="rsvp">
+      <h2 class="rv">RSVP</h2>
+      <form id="rsvpForm" class="rv" novalidate>
+        <input class="field" name="name" placeholder="Name" required autocomplete="name">
+        <input class="field" name="email" type="email" placeholder="Email" autocomplete="email">
+        <input class="field" name="phone" type="tel" placeholder="Phone Number" autocomplete="tel">
+        <select class="field" name="attendance" required>
+          <option value="">Confirmation of Attendance</option>
+          <option>Yes, I will attend</option>
+          <option>Sorry, I can’t attend</option>
+          <option>Maybe</option>
+        </select>
+        <input class="field" name="guests" type="number" min="1" max="10" placeholder="Number of Guest">
+        <button class="btn send" type="submit">Send</button>
+        <p class="ok" id="rsvpOk">Thank you! Your RSVP has been sent.</p>
+      </form>
+    </section>
+
+    <section class="sec" id="wishes" style="padding-top:20px">
+      <div class="panel rv">
+        <h2>Wedding Wishes</h2>
+        <form id="wishForm" novalidate>
+          <input class="field" name="name" placeholder="Name" required>
+          <textarea class="field" name="msg" id="msg" maxlength="300" placeholder="Write your wishes" required></textarea>
+          <p class="left">Characters left: <span id="left">300</span></p>
+          <button class="btn send" type="submit">Send</button>
+        </form>
+      </div>
+      <div id="wishes-list" aria-live="polite"></div>
+    </section>
+
+    <section class="sec live" id="live" style="padding-top:30px">
+      <div class="panel rv" style="margin-bottom:-4px">
+        <h2>Live Streaming</h2>
+      </div>
+      <div class="rv">
+        <a class="yt" id="yt" target="_blank" rel="noopener">
+          <span class="play"><i></i></span>
+        </a>
+        <a class="btn" id="ytBtn" target="_blank" rel="noopener">Join Youtube</a>
+      </div>
+    </section>
+
+    <section class="gal" id="gallery">
+      <div class="galwrap">
+        <button class="arrow prev" id="prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="arrow next" id="next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7"/></svg></button>
+        <div class="track" id="track"></div>
+      </div>
+      <div class="dots" id="dots"></div>
+    </section>
+  </div>
+
+  <!-- ===== THANK YOU ===== -->
+  <section id="thanks" class="ph" data-photo="thanks">
+    <div class="shade"></div>
+    <h2 class="rv">Thank You</h2>
+    <div class="foot">Copyright ©2026. This invitation saves paper and reduces footprint 🌱</div>
+  </section>
+</main>
+
+<!-- music -->
+<button id="music" type="button" aria-label="Pause music">
+  <svg class="i-pause" viewBox="0 0 16 16"><rect x="3" y="2" width="3.4" height="12" rx="1"/><rect x="9.6" y="2" width="3.4" height="12" rx="1"/></svg>
+  <svg class="i-play" viewBox="0 0 16 16"><path d="M4 2l10 6-10 6z"/></svg>
+</button>
+<audio id="audio" loop preload="none"></audio>
+
+<script>
+/* =====================================================================
+   EDIT THIS BLOCK – everything you need to personalise is here
+   ===================================================================== */
+const CONFIG = {
+  // Wedding date/time (with timezone). WIB = +07:00
+  eventStart: "2025-08-09T19:00:00+07:00",
+  eventEnd:   "2025-08-09T21:00:00+07:00",
+  eventTitle: "Wedding of Arbani & Raissa",
+  venueName:  "Grha Pertamina Ballroom",
+  venueAddress: "Jl. Medan Merdeka Tim. No.11-13, Gambir, Jakarta Pusat 10110",
+  mapsUrl: "https://www.google.com/maps/search/?api=1&query=Grha+Pertamina+Ballroom+Jakarta",
+
+  // Paste direct image links (https://…jpg/png). Empty = brown placeholder.
+  // Google Drive tip: use https://lh3.googleusercontent.com/d/FILE_ID  (file shared as "Anyone with link")
+  photos: {
+    cover: "", hero: "", groom: "", bride: "", rsvp: "", thanks: "",
+    gallery: []            // add up to ~10 links, e.g. ["https://…/1.jpg","https://…/2.jpg"]
+  },
+
+  musicUrl: "",            // direct .mp3 link (optional)
+  youtubeId: "",           // e.g. "dQw4w9WgXcQ"  (the part after v=) – shows the video inside the card
+  youtubeUrl: "",          // full link used by the "Join Youtube" button
+
+  // Optional: Google Apps Script web-app URL to store RSVPs & wishes in a Google Sheet.
+  // Leave empty and the forms still work on screen, but nothing is saved.
+  submitUrl: ""
+};
+/* ===================================================================== */
+
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+
+/* photos */
+$$('[data-photo]').forEach(el => {
+  const url = CONFIG.photos[el.dataset.photo];
+  if (url) el.style.backgroundImage = `url("${url}")`;
+});
+
+/* open invitation */
+$('#openBtn').addEventListener('click', () => {
+  $('#cover').classList.add('open');
+  document.body.classList.remove('locked');
+  $('#music').classList.add('show');
+  startMusic();
+  setTimeout(() => $('#cover').style.display = 'none', 1200);
+});
+
+/* music */
+const audio = $('#audio'), mbtn = $('#music');
+if (CONFIG.musicUrl) audio.src = CONFIG.musicUrl;
+function startMusic(){
+  if (!CONFIG.musicUrl) { mbtn.classList.add('paused'); return; }
+  audio.play().then(() => mbtn.classList.remove('paused')).catch(() => mbtn.classList.add('paused'));
+}
+mbtn.addEventListener('click', () => {
+  if (!CONFIG.musicUrl) return;
+  if (audio.paused) { audio.play(); mbtn.classList.remove('paused'); mbtn.setAttribute('aria-label','Pause music'); }
+  else { audio.pause(); mbtn.classList.add('paused'); mbtn.setAttribute('aria-label','Play music'); }
+});
+
+/* countdown */
+const target = new Date(CONFIG.eventStart).getTime();
+const pad = n => String(n).padStart(2,'0');
+function tick(){
+  let d = Math.max(0, target - Date.now());
+  const days = Math.floor(d/864e5); d -= days*864e5;
+  const h = Math.floor(d/36e5);     d -= h*36e5;
+  const m = Math.floor(d/6e4);      d -= m*6e4;
+  const s = Math.floor(d/1e3);
+  $('#cd-d').textContent = pad(days); $('#cd-h').textContent = pad(h);
+  $('#cd-m').textContent = pad(m);    $('#cd-s').textContent = pad(s);
+}
+tick(); setInterval(tick, 1000);
+
+/* save the date + location */
+const g = d => new Date(d).toISOString().replace(/[-:]|\.\d{3}/g,'');
+$('#saveDate').href = 'https://calendar.google.com/calendar/render?action=TEMPLATE'
+  + '&text=' + encodeURIComponent(CONFIG.eventTitle)
+  + '&dates=' + g(CONFIG.eventStart) + '/' + g(CONFIG.eventEnd)
+  + '&location=' + encodeURIComponent(CONFIG.venueName + ', ' + CONFIG.venueAddress);
+$('#locBtn').href = CONFIG.mapsUrl;
+
+/* scroll reveal */
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target);} }), {threshold:.15});
+$$('.rv').forEach(el => io.observe(el));
+
+/* youtube */
+const yt = $('#yt');
+if (CONFIG.youtubeId){
+  yt.removeAttribute('href');
+  yt.innerHTML = `<iframe src="https://www.youtube.com/embed/${CONFIG.youtubeId}" title="Live streaming" allowfullscreen loading="lazy"></iframe>`;
+} else if (CONFIG.youtubeUrl){ yt.href = CONFIG.youtubeUrl; }
+$('#ytBtn').href = CONFIG.youtubeUrl || (CONFIG.youtubeId ? 'https://www.youtube.com/watch?v=' + CONFIG.youtubeId : '#');
+
+/* forms */
+function post(payload){
+  if (!CONFIG.submitUrl) return;
+  fetch(CONFIG.submitUrl, {method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain'}, body:JSON.stringify(payload)}).catch(()=>{});
+}
+$('#rsvpForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target;
+  if (!f.name.value.trim() || !f.attendance.value){ f.name.reportValidity?.(); (f.name.value.trim() ? f.attendance : f.name).focus(); return; }
+  post({type:'rsvp', ...Object.fromEntries(new FormData(f))});
+  f.reset(); $('#rsvpOk').classList.add('show');
+});
+
+const list = $('#wishes-list');
+const sample = [
+  {n:'Sample guest', m:'Selamat menempuh hidup baru! Semoga sakinah, mawaddah, warahmah.', t:'1 year ago'},
+  {n:'Sample guest', m:'Happy wedding! Wishing you a lifetime of love, laughter and happiness.', t:'1 year ago'}
+];
+function addWish(w, top){
+  const el = document.createElement('div');
+  el.className = 'wish';
+  const av = document.createElement('div'); av.className = 'av'; av.textContent = (w.n[0] || '?').toUpperCase();
+  const b = document.createElement('div'); b.className = 'bubble';
+  const n = document.createElement('b'); n.textContent = w.n;
+  const p = document.createElement('span'); p.textContent = w.m;
+  const t = document.createElement('time'); t.textContent = w.t;
+  b.append(n, p, t); el.append(av, b);
+  top ? list.prepend(el) : list.append(el);
+}
+sample.forEach(w => addWish(w));
+$('#msg').addEventListener('input', e => $('#left').textContent = 300 - e.target.value.length);
+$('#wishForm').addEventListener('submit', e => {
+  e.preventDefault();
+  const f = e.target, n = f.name.value.trim(), m = f.msg.value.trim();
+  if (!n || !m){ (n ? f.msg : f.name).focus(); return; }
+  addWish({n, m, t:'just now'}, true);
+  post({type:'wish', name:n, message:m});
+  f.reset(); $('#left').textContent = 300;
+});
+
+/* gallery */
+const track = $('#track'), dots = $('#dots');
+const gal = CONFIG.photos.gallery.length ? CONFIG.photos.gallery : Array(8).fill('');
+gal.forEach((url, i) => {
+  const s = document.createElement('div'); s.className = 'slide ph';
+  if (url) s.style.backgroundImage = `url("${url}")`;
+  track.append(s);
+  const d = document.createElement('i'); dots.append(d);
+});
+let idx = 0, auto;
+const slides = () => [...track.children];
+function go(i){
+  idx = (i + gal.length) % gal.length;
+  const s = slides()[idx];
+  track.scrollTo({left: s.offsetLeft - (track.clientWidth - s.clientWidth)/2, behavior:'smooth'});
+}
+function mark(){
+  const c = track.scrollLeft + track.clientWidth/2;
+  let best = 0, bd = 1e9;
+  slides().forEach((s,i) => { const d = Math.abs(s.offsetLeft + s.clientWidth/2 - c); if (d < bd){ bd = d; best = i; } });
+  idx = best;
+  [...dots.children].forEach((d,i) => d.classList.toggle('on', i === best));
+}
+track.addEventListener('scroll', mark, {passive:true});
+const stop = () => clearInterval(auto);
+const start = () => { stop(); auto = setInterval(() => go(idx + 1), 4000); };
+$('#prev').addEventListener('click', () => { go(idx - 1); start(); });
+$('#next').addEventListener('click', () => { go(idx + 1); start(); });
+track.addEventListener('pointerdown', stop);
+track.addEventListener('pointerup', start);
+mark();
+if (!matchMedia('(prefers-reduced-motion: reduce)').matches) start();
+</script>
+</body>
+</html>
